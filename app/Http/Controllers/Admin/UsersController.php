@@ -15,15 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-         $mods = UserMod::find([1, 2, 3]);
-
-        
-        // Using alias name
-        //$mods = UserMod::all();
-
-        foreach ($mods as $item) {
-            echo $item->name."<br/>";
-        }
+         $mods = UserMod::paginate(10);
+        return view('admin.user.lists', compact('mods') );
 
     }
 
